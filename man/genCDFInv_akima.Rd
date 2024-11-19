@@ -33,7 +33,7 @@ interpolating data.
 }
 \examples{
 # Example usage:
-library(akima)
+library(interp)
 data <- c(1, 2, 3, 4, 5)
 inv_cdf <- genCDFInv_akima(data)
 inv_cdf(c(0.1, 0.5, 0.9))  # Compute interpolated values for given probabilities

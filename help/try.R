@@ -10,11 +10,11 @@ devtools::build()
 load_all(".")
 library(tidyverse)
 library(mvtnorm)
-library(akima)
 library(clue)
 library(ggExtra)
 library(gridExtra)
 library(DescTools)
+library(interp)
 
 
 # Test cases

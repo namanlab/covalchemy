@@ -3,25 +3,25 @@ Title: A Package for Constructing Joint Distributions with Control Over Statisti
 Version: 1.0.0
 Authors@R: c(person("Naman", "Agrawal", email = "naman.agr03@gmail.com", role = c("aut", "cre")))
 Description: 
-  The **covalchemy** package provides tools for synthesizing joint distributions from marginal densities, focusing on controlling key statistical properties such as correlation for continuous data, mutual information for categorical data, and inducing Simpson's Paradox. 
-  The package allows users to generate datasets with specified correlation structures for continuous variables, adjust mutual information between categorical variables, and manipulate subgroup correlations to intentionally create Simpson's Paradox. 
-  It uses methods such as elliptical copulas, simulated annealing, and inverse CDF approximations to provide a flexible framework for generating and analyzing data with predetermined dependency structures.
+  Tools for synthesizing joint distributions from marginal densities, focusing on controlling key statistical properties such as correlation for continuous data, mutual information for categorical data, and inducing Simpson's Paradox. 
+  Allows users to generate datasets with specified correlation structures for continuous variables, adjust mutual information between categorical variables, and manipulate subgroup correlations to intentionally create Simpson's Paradox. 
+  Uses methods such as elliptical copulas, simulated annealing, and inverse Cumulative Distribution Function approximations to provide a flexible framework for generating and analyzing data with predetermined dependency structures.
 Encoding: UTF-8
 LazyData: true
 Imports:
   dplyr, 
   ggplot2,
   mvtnorm,
-  akima,
+  interp,
   clue,
   ggExtra,
   gridExtra,
   DescTools,
   MASS
 Depends: R (>= 3.5.0) 
-License: MIT + file LICENSE
+License: GPL-3
 Roxygen: list(markdown = TRUE)
-BugReports: https://github.com/your_username/covalchemy/issues
+BugReports: https://github.com/namanlab/covalchemy/issues
 URL: https://github.com/namanlab/covalchemy
 RoxygenNote: 7.3.2
 Config/testthat/edition: 3

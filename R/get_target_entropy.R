@@ -25,13 +25,7 @@
 #'   y = sample(paste("Categ", 10:4), 10000, replace = TRUE)
 #' )
 #' target_entropy <- 1  # Set your target entropy here
-#' res <- get_target_entropy(df$x, df$y, target_entropy)
-#' table(df$x)
-#' table(res$final_df$x)
-#' table(df$y)
-#' table(res$final_df$y)
-#' get_mutual_information(table(df$x, df$y))
-#' get_mutual_information(table(res$final_df$x, res$final_df$y))
+#' \dontrun{res <- get_target_entropy(df$x, df$y, target_entropy)}
 #'
 #'
 #' @export
