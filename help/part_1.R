@@ -115,5 +115,7 @@ x1 = ChickWeight$weight
 x2 = ChickWeight$Time
 cor(x1, x2, method = "kendall")
 res = get_target_corr(x1, x2, target_corr_kendall = 0,
-                      copula_type = "gaussian", inv_cdf_type = "poly")
+                      copula_type = "t", inv_cdf_type = "poly", degree = 5)
+cor(res$x1, res$x2, method = "kendall")
+res = get_target_corr(x1, x2, target_corr_kendall = 0.99)
 cor(res$x1, res$x2, method = "kendall")

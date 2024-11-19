@@ -18,6 +18,7 @@
 #' @param initial_temp Initial temperature for simulated annealing (default is 1.0).
 #' @param cooling_rate Cooling rate for simulated annealing (default is 0.99).
 #' @param order_vec Manual ordering of grids (default is NA, calculated automatically if not specified).
+#' @param degree Degree of polynomial used for polynomial inverse CDF (default is 5).
 #'
 #' @return A list containing:
 #'   \item{df_all}{The final dataset with original, transformed, and annealed data.}
@@ -32,6 +33,8 @@
 #' t <- c(-0.8, 0.8, -0.8)
 #' res <- get_simpsons_paradox_c(x, y, z, t, sd_x = 0.07, sd_y = 0.07, lambda4 = 5)
 #'
+#' @importFrom gridExtra grid.arrange
+#' @importFrom ggExtra ggMarginal
 #' @export
 get_simpsons_paradox_c <- function(x, y, z,
                                    corr_vector,   # Vector of correlations
@@ -41,7 +44,8 @@ get_simpsons_paradox_c <- function(x, y, z,
                                    max_iter = 1000,            # Maximum iterations for simulated annealing
                                    initial_temp = 1.0,         # Initial temperature for annealing
                                    cooling_rate = 0.99,        # Cooling rate for annealing
-                                   order_vec = NA) {           # to manually specify ordering of grids
+                                   order_vec = NA,
+                                   degree = 5) {           # to manually specify ordering of grids
 
   cat("Starting transformation process...\n")
 
@@ -152,21 +156,21 @@ get_simpsons_paradox_c <- function(x, y, z,
     geom_point(aes(x = x, y = y, color = z)) +
     theme_bw() + guides(color = "none") +
     labs(title = "Original Data",
-         caption = str_c("Overall Correlation: ", round(cor(x, y), 3)))
+         caption = paste0("Overall Correlation: ", round(cor(x, y), 3)))
   p1 <- ggMarginal(p_orig, type = "density")
 
   p_copula <- ggplot(df_composition) +
     geom_point(aes(x = x, y = y, color = z)) +
     theme_bw() + guides(color = "none") +
     labs(title = "Simpson's Paradox Copula Transformation",
-         caption = str_c("Overall Correlation: ", round(cor(df_composition$x, df_composition$y), 3)))
+         caption = paste0("Overall Correlation: ", round(cor(df_composition$x, df_composition$y), 3)))
   p2 <- ggMarginal(p_copula, type = "density")
 
   p_anneal <- ggplot(df_annealing) +
     geom_point(aes(x = x_optimized, y = y_optimized, color = z)) +
     theme_bw() + guides(color = "none") +
     labs(title = "Simulated Annealing Optimization",
-         caption = str_c("Overall Correlation: ", round(cor(df_annealing$x_optimized, df_annealing$y_optimized), 3)))
+         caption = paste0("Overall Correlation: ", round(cor(df_annealing$x_optimized, df_annealing$y_optimized), 3)))
   p3 <- ggMarginal(p_anneal, type = "density")
 
   # Plots:

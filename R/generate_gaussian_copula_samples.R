@@ -1,7 +1,7 @@
 #' Generate Gaussian Copula Samples
 #'
 #' This function generates samples from a Gaussian copula given a specified
-#' correlation matrix. The samples are uniformly distributed in [0, 1] across
+#' correlation matrix. The samples are uniformly distributed in \code{[0, 1]} across
 #' dimensions.
 #'
 #' @param n Integer. The number of samples to generate.
@@ -9,12 +9,12 @@
 #' @param rho_matrix A \code{d x d} positive-definite correlation matrix.
 #' @return A matrix of size \code{n x d}, where each row represents a sample
 #'         and each column corresponds to a dimension. The values are uniformly
-#'         distributed in [0, 1].
+#'         distributed in \code{[0, 1]}.
 #' @details
 #' The function works as follows:
 #' \enumerate{
 #'   \item Generates multivariate normal samples with the given correlation matrix.
-#'   \item Transforms the samples to the uniform distribution [0, 1] using the
+#'   \item Transforms the samples to the uniform distribution \code{[0, 1]} using the
 #'         cumulative distribution function (CDF) of the standard normal.
 #' }
 #' @examples
@@ -26,6 +26,7 @@
 #'
 #' @importFrom mvtnorm rmvnorm
 #' @importFrom stats pnorm
+#' @importFrom stats approxfun coef cor ecdf lm predict quantile rnorm runif
 #' @export
 generate_gaussian_copula_samples <- function(n, d, rho_matrix) {
   # Step 1: Generate multivariate normal samples

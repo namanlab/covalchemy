@@ -1,7 +1,7 @@
 #' Generate t-Copula Samples
 #'
 #' This function generates samples from a t-copula given a specified correlation
-#' matrix and degrees of freedom. The samples are uniformly distributed in [0, 1]
+#' matrix and degrees of freedom. The samples are uniformly distributed in \code{[0, 1]}.
 #' across dimensions.
 #'
 #' @param n Integer. The number of samples to generate.
@@ -10,13 +10,13 @@
 #' @param df Numeric. The degrees of freedom of the t-distribution. Must be positive.
 #' @return A matrix of size \code{n x d}, where each row represents a sample
 #'         and each column corresponds to a dimension. The values are uniformly
-#'         distributed in [0, 1].
+#'         distributed in \code{[0, 1]}.
 #' @details
 #' The function works as follows:
 #' \enumerate{
 #'   \item Generates multivariate t-distributed samples using the specified
 #'         correlation matrix and degrees of freedom.
-#'   \item Transforms the samples to the uniform distribution [0, 1] using the
+#'   \item Transforms the samples to the uniform distribution \code{[0, 1]} using the
 #'         cumulative distribution function (CDF) of the t-distribution.
 #' }
 #' @examples
@@ -28,6 +28,7 @@
 #'
 #' @importFrom mvtnorm rmvt
 #' @importFrom stats pt
+#' @importFrom stats approxfun coef cor ecdf lm predict quantile rnorm runif
 #' @export
 generate_t_copula_samples <- function(n, d, rho_matrix, df) {
   # Validate inputs

@@ -16,6 +16,7 @@
 #' tab <- matrix(c(10, 5, 7, 8), nrow = 2)
 #' log_odds_dc(tab)
 #'
+#' @importFrom DescTools ConDisPairs
 #' @export
 log_odds_dc <- function(tab) {
 

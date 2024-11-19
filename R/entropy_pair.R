@@ -7,7 +7,7 @@
 #' @return A numeric value representing the entropy of the pair.
 #' @details
 #' The entropy is calculated using the formula:
-#' \[ H(X, Y) = - \sum p(x, y) \cdot \log_2(p(x, y)) \]
+#' \[ H(X, Y) = - sum p(x, y) * log_2(p(x, y)) \]
 #' where \( p(x, y) \) is the probability of observing the pair \( (x, y) \) from the table.
 #'
 #' @examples

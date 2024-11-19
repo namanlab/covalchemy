@@ -14,7 +14,10 @@
 #' @param p A numeric vector representing the target correlation values for each category in `Z`.
 #' @param beta0_orig The original intercept value for the regression model.
 #' @param beta1_orig The original slope value for the regression model.
-#' @param lambda1, lambda2, lambda3, lambda4 Penalty parameters to control the importance of different loss components.
+#' @param lambda1 Penalty parameters to control the importance of different loss components.
+#' @param lambda2 Penalty parameters to control the importance of different loss components.
+#' @param lambda3 Penalty parameters to control the importance of different loss components.
+#' @param lambda4 Penalty parameters to control the importance of different loss components.
 #' @param R2_orig The original R² value for the model (not used directly in the calculation but might be for reference).
 #' @param printc A boolean flag to control printing of intermediate values for debugging.
 #' @return A numeric value representing the total loss calculated by the objective function.

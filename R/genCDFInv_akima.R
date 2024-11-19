@@ -2,11 +2,11 @@
 #'
 #' This function creates an inverse cumulative distribution function (CDF)
 #' for a given dataset using Akima spline interpolation. The resulting function
-#' maps probabilities (in the range [0, 1]) to values in the dataset.
+#' maps probabilities (in the range \code{[0, 1]}) to values in the dataset.
 #'
 #' @param X A numeric vector. The dataset for which the inverse CDF is to be created.
 #' @return A function that takes a single argument, \code{p}, a numeric vector of
-#'         probabilities in [0, 1], and returns the corresponding values interpolated
+#'         probabilities in \code{[0, 1]}, and returns the corresponding values interpolated
 #'         from the dataset using Akima splines.
 #' @details
 #' The function works as follows:

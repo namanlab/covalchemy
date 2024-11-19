@@ -44,9 +44,6 @@ plot_log_odds <- function(matrices, new_matrices, names_matrices, log_odds_gener
     type = c(rep("Before", length(names_matrices)), rep("After", length(names_matrices)))
   )
 
-  # Print the data frame for reference
-  print(data)
-
   # Generate the bar plot using ggplot2
   plot_gen <- data %>%
     mutate(type = factor(type, levels = c("Before", "After"), ordered = TRUE)) %>%

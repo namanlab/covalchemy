@@ -5,10 +5,10 @@
 #'
 #' @param n Integer. The number of samples to generate.
 #' @param p Numeric. The correlation coefficient (\eqn{\rho}) between the two variables.
-#'          Must be in the range [-1, 1].
+#'          Must be in the range \code{[-1, 1]}.
 #' @return A matrix of size \code{n x 2}, where each row represents a sample,
 #'         and each column corresponds to one of the two variables. The values
-#'         are uniformly distributed in [0, 1].
+#'         are uniformly distributed in \code{[0, 1]}.
 #' @details
 #' The function internally constructs a correlation matrix for two variables:
 #' \deqn{\rho_matrix = \begin{bmatrix} 1 & p \\ p & 1 \end{bmatrix}}

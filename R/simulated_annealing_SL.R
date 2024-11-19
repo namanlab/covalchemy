@@ -82,29 +82,3 @@ simulated_annealing_SL <- function(X, Y, Z, X_st, Y_st, p, sd_x = 0.05, sd_y = 0
   return(list(X_prime = best_X_prime, Y_prime = best_Y_prime))
 }
 
-# Internal helper function for the objective function calculation.
-# This function calculates the loss for the current solution using total variation
-# distance, coefficient differences, R^2 differences, and inter-cluster distance.
-#' @noRd
-objective_function_SL <- function(X_prime, Y_prime, X, Y, Z, p, beta0_orig, beta1_orig,
-                                  lambda1, lambda2, lambda3, lambda4, R2_orig) {
-  # Calculate total variation distance (for X and Y)
-  tvd_X <- sum(abs(X_prime - X))  # Placeholder for the actual TV distance computation
-  tvd_Y <- sum(abs(Y_prime - Y))  # Placeholder for the actual TV distance computation
-
-  # Compute the difference in regression coefficients
-  diff_beta0 <- (beta0_orig - mean(Y_prime - X_prime))^2
-  diff_beta1 <- (beta1_orig - mean(Y_prime / X_prime))^2
-
-  # Compute R^2 differences for each category in Z
-  R2_diff <- sum((R2_orig - p)^2)  # Placeholder for actual R^2 differences calculation
-
-  # Inter-cluster distance based on Z (as a placeholder)
-  inter_cluster_dist <- sum(abs(table(Z) - mean(Z)))  # Placeholder for actual inter-cluster calculation
-
-  # Combine all terms into the final loss function
-  loss <- lambda1 * (tvd_X + tvd_Y) + lambda2 * (diff_beta0 + diff_beta1) +
-    lambda3 * R2_diff + lambda4 * inter_cluster_dist
-
-  return(loss)
-}

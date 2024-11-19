@@ -2,12 +2,12 @@
 #'
 #' This function creates an inverse cumulative distribution function (CDF) for a
 #' given dataset using polynomial regression. The resulting function maps probabilities
-#' (in the range [0, 1]) to values in the dataset.
+#' (in the range \code{[0, 1]}) to values in the dataset.
 #'
 #' @param data A numeric vector. The dataset for which the inverse CDF is to be created.
 #' @param degree An integer. The degree of the polynomial to fit in the regression.
 #' @return A function that takes a single argument, \code{y}, a numeric vector of
-#'         probabilities in [0, 1], and returns the corresponding values predicted
+#'         probabilities in \code{[0, 1]}, and returns the corresponding values predicted
 #'         by the polynomial regression.
 #' @details
 #' The function works as follows:

@@ -252,8 +252,8 @@ get_target_entropy <- function(x, y, target_entropy, max_n = 10000, epsilon = 0.
 # Increasing
 set.seed(33)
 df <- data.frame(
-  x = sample(str_c("Categ", 1:4), 10000, replace = TRUE),
-  y = sample(str_c("Categ", 10:4), 10000, replace = TRUE)
+  x = sample(paste("Categ", 1:4), 10000, replace = TRUE),
+  y = sample(paste("Categ", 10:4), 10000, replace = TRUE)
 )
 
 target_entropy <- 1 # Set your target entropy here
@@ -268,6 +268,7 @@ get_mutual_information(table(res$final_df$x, res$final_df$y))
 
 # Decreasing
 set.seed(42)
+library(stringr)
 df <- data.frame(
   x = sample(str_c("Categ", 1:4), 10000, replace = TRUE)
 ) %>% mutate(y =

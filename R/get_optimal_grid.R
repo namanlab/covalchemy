@@ -25,6 +25,7 @@
 #' optimal_assignment <- get_optimal_grid(x, y, z)
 #' print(optimal_assignment)  # Print the assignment indices
 #'
+#' @importFrom clue solve_LSAP
 #' @export
 get_optimal_grid <- function(x, y, z) {
   # Calculate quantiles for x and y based on z distribution

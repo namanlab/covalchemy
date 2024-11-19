@@ -243,9 +243,9 @@ df_list <- lapply(seq_along(matrices), function(i) {
 final_df <- do.call(rbind, df_list)
 expanded_df <- final_df[rep(1:nrow(final_df), final_df$Freq), c("x", "y", "z")]
 result <- get_simpsons_paradox_d(expanded_df$x, expanded_df$y, expanded_df$z,
-                          manual_vec = c(-1, -1, -1, -1, -1, -1),
-                          target_overall = +1,
-                          margin = 0.2,  margin_overall = 0.2, max_n = 200)
+                                 manual_vec = c(-1, -1, -1, -1, -1, -1),
+                                 target_overall = +1,
+                                 margin = 0.2,  margin_overall = 0.2, max_n = 200)
 table(expanded_df$x) - table(result$final_df$x)
 table(expanded_df$y) - table(result$final_df$y)
 table(expanded_df$z) - table(result$final_df$z)

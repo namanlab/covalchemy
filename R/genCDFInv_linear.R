@@ -2,11 +2,11 @@
 #'
 #' This function creates an inverse cumulative distribution function (CDF) for
 #' a given dataset using linear interpolation. The resulting function maps
-#' probabilities (in the range [0, 1]) to values in the dataset.
+#' probabilities (in the range \code{[0, 1]}) to values in the dataset.
 #'
 #' @param X A numeric vector. The dataset for which the inverse CDF is to be created.
 #' @return A function that takes a single argument, \code{p}, a numeric vector of
-#'         probabilities in [0, 1], and returns the corresponding values interpolated
+#'         probabilities in \code{[0, 1]}, and returns the corresponding values interpolated
 #'         from the dataset.
 #' @details
 #' The function works as follows:
@@ -17,7 +17,7 @@
 #'   \item Uses \code{\link[stats]{approxfun}} to create a linear interpolation function
 #'         mapping probabilities to dataset values.
 #' }
-#' The resulting function can handle probabilities outside [0, 1] using the
+#' The resulting function can handle probabilities outside \code{[0, 1]} using the
 #' \code{rule = 2} parameter in \code{\link[stats]{approxfun}}, which extrapolates
 #' based on the nearest data points.
 #'

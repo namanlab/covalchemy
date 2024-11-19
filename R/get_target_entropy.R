@@ -19,11 +19,10 @@
 #'   - min_mut: The minimum mutual information found.
 #'
 #' @examples
-#' # Test Case 1: Increasing Entropy
 #' set.seed(33)
 #' df <- data.frame(
-#'   x = sample(str_c("Categ", 1:4), 10000, replace = TRUE),
-#'   y = sample(str_c("Categ", 10:4), 10000, replace = TRUE)
+#'   x = sample(paste("Categ", 1:4), 10000, replace = TRUE),
+#'   y = sample(paste("Categ", 10:4), 10000, replace = TRUE)
 #' )
 #' target_entropy <- 1  # Set your target entropy here
 #' res <- get_target_entropy(df$x, df$y, target_entropy)
@@ -34,23 +33,6 @@
 #' get_mutual_information(table(df$x, df$y))
 #' get_mutual_information(table(res$final_df$x, res$final_df$y))
 #'
-#' # Test Case 2: Decreasing Entropy
-#' set.seed(42)
-#' df <- data.frame(
-#'   x = sample(str_c("Categ", 1:4), 10000, replace = TRUE)
-#' ) %>% mutate(y =
-#'               ifelse(str_ends(x, "1"), sample(str_c("Categ", 10:8), 1, replace = TRUE),
-#'                      ifelse(str_ends(x, "2"), sample(str_c("Categ", 8:6), 1, replace = TRUE),
-#'                             sample(str_c("Categ", 5:4), 1, replace = TRUE))
-#' )
-#' target_entropy <- 0.2
-#' res <- get_target_entropy(df$x, df$y, target_entropy)
-#' table(df$x)
-#' table(res$final_df$x)
-#' table(df$y)
-#' table(res$final_df$y)
-#' get_mutual_information(table(df$x, df$y))
-#' get_mutual_information(table(res$final_df$x, res$final_df$y))
 #'
 #' @export
 get_target_entropy <- function(x, y, target_entropy, max_n = 10000, epsilon = 0.001) {
