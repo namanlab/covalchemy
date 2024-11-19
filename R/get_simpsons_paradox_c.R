@@ -49,6 +49,9 @@ get_simpsons_paradox_c <- function(x, y, z,
 
   cat("Starting transformation process...\n")
 
+  x_optimized <- NULL
+  y_optimized <- NULL
+
   # Apply chosen inverse CDF
   FInvFunc <- switch(inv_cdf_type,
                      "quantile_1" = function(x1) {genCDFInv_quantile(x1, 1)}, # stepwise

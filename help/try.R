@@ -1,9 +1,7 @@
 library(devtools)
 library(roxygen2)
-
 # Manual
 devtools::document()
-
 # Check and build
 devtools::check()
 devtools::build()

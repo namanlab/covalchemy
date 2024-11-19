@@ -22,6 +22,10 @@
 #' @export
 plot_log_odds <- function(matrices, new_matrices, names_matrices, log_odds_general = log_odds_dc) {
 
+  type <- NULL
+  matrix_name <- NULL
+  log_odds <- NULL
+
   # Calculate log-odds for matrices before and after the transformation
   before_log_odds <- sapply(matrices, log_odds_general)
   after_log_odds <- sapply(new_matrices, log_odds_general)

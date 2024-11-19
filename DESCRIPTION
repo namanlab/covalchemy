@@ -16,7 +16,8 @@ Imports:
   clue,
   ggExtra,
   gridExtra,
-  DescTools
+  DescTools,
+  MASS
 Depends: R (>= 3.5.0) 
 License: MIT + file LICENSE
 Roxygen: list(markdown = TRUE)

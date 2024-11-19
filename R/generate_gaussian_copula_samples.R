@@ -25,6 +25,7 @@
 #' head(samples)
 #'
 #' @importFrom mvtnorm rmvnorm
+#' @importFrom MASS mvrnorm
 #' @importFrom stats pnorm
 #' @importFrom stats approxfun coef cor ecdf lm predict quantile rnorm runif
 #' @export
