@@ -67,7 +67,6 @@ sinkhorn_algorithm <- function(initial_table, obj, max_iter = 500, tolerance = 1
 
     # Step 8: Check for convergence based on the tolerance (if needed)
     if (iter > 1 && abs(curr_eval - mutual_info_history$mutual_info[iter - 1]) < tolerance) {
-      print(paste("Converged at iteration", iter, "with objective value", curr_eval))
       break
     }
   }

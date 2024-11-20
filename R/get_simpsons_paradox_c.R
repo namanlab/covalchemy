@@ -47,8 +47,6 @@ get_simpsons_paradox_c <- function(x, y, z,
                                    order_vec = NA,
                                    degree = 5) {           # to manually specify ordering of grids
 
-  cat("Starting transformation process...\n")
-
   x_optimized <- NULL
   y_optimized <- NULL
 
@@ -85,8 +83,6 @@ get_simpsons_paradox_c <- function(x, y, z,
     z_cat <- z_levels[i]
     prob_val <- table(z)[i] / length(z)   # Proportion of category in z
 
-    cat("Processing category:", z_cat, "with proportion:", prob_val, "\n")
-
     # Generate samples using the Gaussian copula
     p_corr <- p_corr_vec[i]
     n_samples <- sum(z == z_cat)  # Number of samples for current category
@@ -120,10 +116,7 @@ get_simpsons_paradox_c <- function(x, y, z,
     df_composition <- rbind(df_composition, data.frame(x = x_transformed, y = y_transformed, z = z_cat))
   }
 
-  cat("Piecewise copula transformation complete.\n")
-
   # Apply simulated annealing to further optimize the samples
-  cat("Starting simulated annealing optimization...\n")
   res_anneal <- simulated_annealing_SL(x, y, z,
                                        df_composition$x, df_composition$y, p_corr_vec,
                                        sd_x, sd_y,
@@ -134,8 +127,6 @@ get_simpsons_paradox_c <- function(x, y, z,
   df_annealing <- data.frame(x_optimized = res_anneal$X_prime,
                              y_optimized = res_anneal$Y_prime,
                              z = z)
-
-  cat("Simulated annealing complete.\n")
 
   # Combine original, copula-transformed, and annealed data into a single dataframe
   df_final <- data.frame(x_original = x, y_original = y, z = z,
@@ -149,10 +140,6 @@ get_simpsons_paradox_c <- function(x, y, z,
     calculate_tv_distance_empirical(y, df_composition$y)
   tv_final <- calculate_tv_distance_empirical(x, df_annealing$x_optimized) +
     calculate_tv_distance_empirical(y, df_annealing$y_optimized)
-
-  # Print TV distances
-  cat("Total Variation Before Annealing: ", tv_initial, "\n")
-  cat("Total Variation After Annealing: ", tv_final, "\n")
 
   # Plot original, copula-transformed, and simulated annealing results
   p_orig <- ggplot(data.frame(x = x, y = y, z = z)) +

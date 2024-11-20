@@ -16,14 +16,12 @@
 #' y <- rnorm(1000)
 #' z <- sample(1:5, 1000, replace = TRUE)
 #' optimal_assignment <- get_optimal_grid(x, y, z)
-#' print(optimal_assignment)  # Print the assignment indices
 #'
 #' # Test Case 2: Data with a skewed distribution
 #' x <- rexp(1000, rate = 1)
 #' y <- rpois(1000, lambda = 2)
 #' z <- sample(1:3, 1000, replace = TRUE)
 #' optimal_assignment <- get_optimal_grid(x, y, z)
-#' print(optimal_assignment)  # Print the assignment indices
 #'
 #' @importFrom clue solve_LSAP
 #' @export
@@ -66,7 +64,6 @@ get_optimal_grid <- function(x, y, z) {
   # Convert the result matrix to a cost matrix by subtracting from the maximum count
   M <- max(res)  # Get the maximum value in the result matrix
   cost_matrix <- M - res  # Cost matrix: max count minus the counts in res
-  print(res)  # Print the resulting count matrix
 
   # Solve the assignment problem using the Hungarian algorithm (Linear Sum Assignment Problem)
   assignment <- solve_LSAP(cost_matrix)

@@ -48,7 +48,7 @@ simulated_annealing_MI <- function(initial_table, obj, gen_fn, target,
 
     # Check if the target entropy (or objective) is reached
     if ((maxim && curr_eval >= target) || (!maxim && curr_eval <= target)) {
-      print(paste("Target entropy reached:", curr_eval))
+      message(paste("Target entropy reached:", curr_eval))
       break
     }
 

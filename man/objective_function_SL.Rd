@@ -18,7 +18,7 @@ objective_function_SL(
   lambda3,
   lambda4,
   R2_orig,
-  printc = F
+  printc = FALSE
 )
 }
 \arguments{

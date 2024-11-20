@@ -41,7 +41,7 @@ df <- data.frame(
   y = sample(paste("Categ", 10:4), 10000, replace = TRUE)
 )
 target_entropy <- 1  # Set your target entropy here
-\dontrun{res <- get_target_entropy(df$x, df$y, target_entropy)}
+\donttest{res <- get_target_entropy(df$x, df$y, target_entropy)}
 
 
 }

@@ -28,13 +28,11 @@ x <- rnorm(1000)
 y <- rnorm(1000)
 z <- sample(1:5, 1000, replace = TRUE)
 optimal_assignment <- get_optimal_grid(x, y, z)
-print(optimal_assignment)  # Print the assignment indices
 
 # Test Case 2: Data with a skewed distribution
 x <- rexp(1000, rate = 1)
 y <- rpois(1000, lambda = 2)
 z <- sample(1:3, 1000, replace = TRUE)
 optimal_assignment <- get_optimal_grid(x, y, z)
-print(optimal_assignment)  # Print the assignment indices
 
 }

@@ -57,7 +57,7 @@
 #'
 #' @export
 objective_function_SL <- function(X_prime, Y_prime, X, Y, Z, p, beta0_orig, beta1_orig,
-                                  lambda1, lambda2, lambda3, lambda4, R2_orig, printc = F) {
+                                  lambda1, lambda2, lambda3, lambda4, R2_orig, printc = FALSE) {
   # Step 1: Compute total variation (TV) distance between original and generated data for X and Y
   TV_X <- calculate_tv_distance_empirical(X, X_prime)  # TV distance for X
   TV_Y <- calculate_tv_distance_empirical(Y, Y_prime)  # TV distance for Y

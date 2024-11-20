@@ -25,7 +25,7 @@
 #'   y = sample(paste("Categ", 10:4), 10000, replace = TRUE)
 #' )
 #' target_entropy <- 1  # Set your target entropy here
-#' \dontrun{res <- get_target_entropy(df$x, df$y, target_entropy)}
+#' \donttest{res <- get_target_entropy(df$x, df$y, target_entropy)}
 #'
 #'
 #' @export
@@ -47,14 +47,9 @@ get_target_entropy <- function(x, y, target_entropy, max_n = 10000, epsilon = 0.
   result_min_sk <- sinkhorn_algorithm(table, obj = get_mutual_information, max_iter = max_n)
   new_mut_min <- result_min_sk[[2]]
 
-  # Print the max and min entropy values
-  print(paste("Current Entropy:", old_mut))
-  print(paste("Min Entropy:", new_mut_min))
-  print(paste("Max Entropy:", new_mut_max))
-
   # Step 2: Check if the target entropy is within the range
   if (target_entropy < new_mut_min || target_entropy > new_mut_max) {
-    print("Target entropy is out of range. Please choose a value between the min and max entropy.")
+    message("Target entropy is out of range. Please choose a value between the min and max entropy.")
     return(NULL)
   }
 
@@ -67,10 +62,9 @@ get_target_entropy <- function(x, y, target_entropy, max_n = 10000, epsilon = 0.
     final_table <- result[[1]]
     final_mut <- result[[2]]
     if (result[[2]] - target_entropy > epsilon) {
-      print("Target exceeded. Re-adjusting with gen_number_1 to decrease.")
       result_sub <- simulated_annealing_MI(result[[1]], obj = get_mutual_information, gen_fn = gen_number_1,
                                  target = target_entropy, max_n = max_n,
-                                 maxim = FALSE, readj = T)
+                                 maxim = FALSE, readj = TRUE)
       result_sub[[4]]$iteration = result_sub[[4]]$iteration + max(final_hist$iteration)
       final_hist = rbind(result_sub[[4]], final_hist)
       final_table <- result_sub[[1]]
@@ -85,19 +79,15 @@ get_target_entropy <- function(x, y, target_entropy, max_n = 10000, epsilon = 0.
     final_table <- result[[1]]
     final_mut <- result[[2]]
     if (target_entropy - result[[2]] > epsilon ) {
-      print("Target crossed. Re-adjusting with gen_number_1 to increase.")
       result_sub <- simulated_annealing_MI(result[[1]], obj = get_mutual_information, gen_fn = gen_number_1,
                                  target = target_entropy, max_n = max_n,
-                                 maxim = TRUE, readj = T)
+                                 maxim = TRUE, readj = TRUE)
       result_sub[[4]]$iteration = result_sub[[4]]$iteration + max(final_hist$iteration)
       final_hist = rbind(result_sub[[4]], final_hist)
       final_table <- result_sub[[1]]
       final_mut <- result_sub[[2]]
     }
   }
-
-  # Print the final mutual information value
-  print(paste("Final Mutual Information:", final_mut))
 
   # Return results
   contingency_df <- as.data.frame(as.table(final_table))

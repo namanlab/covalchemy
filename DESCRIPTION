@@ -1,11 +1,11 @@
 Package: covalchemy
-Title: A Package for Constructing Joint Distributions with Control Over Statistical Properties
+Title: Constructing Joint Distributions with Control Over Statistical Properties
 Version: 1.0.0
 Authors@R: c(person("Naman", "Agrawal", email = "naman.agr03@gmail.com", role = c("aut", "cre")))
-Description: 
-  Tools for synthesizing joint distributions from marginal densities, focusing on controlling key statistical properties such as correlation for continuous data, mutual information for categorical data, and inducing Simpson's Paradox. 
-  Allows users to generate datasets with specified correlation structures for continuous variables, adjust mutual information between categorical variables, and manipulate subgroup correlations to intentionally create Simpson's Paradox. 
-  Uses methods such as elliptical copulas, simulated annealing, and inverse Cumulative Distribution Function approximations to provide a flexible framework for generating and analyzing data with predetermined dependency structures.
+Description: Synthesizing joint distributions from marginal densities, focusing on controlling key statistical properties such as correlation for continuous data, mutual information for categorical data, and inducing Simpson's Paradox. Generate datasets with specified correlation structures for continuous variables, adjust mutual information between categorical variables, and manipulate subgroup correlations to intentionally create Simpson's Paradox.
+References: 
+  Joe (1997) "Multivariate Models and Dependence Concepts" <doi:10.1201/b13150>
+  Sklar (1959) <https://en.wikipedia.org/wiki/Sklar%27s_theorem>
 Encoding: UTF-8
 LazyData: true
 Imports:
